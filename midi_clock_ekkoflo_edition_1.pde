@@ -9,6 +9,7 @@ Enable Random
 Consider using switch for swing 
 Enable CV when clock is running from MIDI 
 Enable CC from Midi to influence divisor and swing 
+Remove midi for clarity, making the module an analog clock divider alone
 
 
 
@@ -24,10 +25,10 @@ Analog ins:
 
 */
 
-byte midi_start = 0xfa;
-byte midi_stop = 0xfc;
-byte midi_clock = 0xf8;
-byte midi_continue = 0xfb;
+// byte midi_start = 0xfa; //removing midi related stuff
+// byte midi_stop = 0xfc;
+// byte midi_clock = 0xf8;
+// byte midi_continue = 0xfb;
 int play_flag = 0;
 int firstpin = 9;
 int lastpin = 13;
@@ -38,7 +39,9 @@ int divsize = 10; // = how many elements in clockdiv?
 int clockdiv[3][10] = {
 {3,6,8,12,16,24,36,48,96,192}, // pretty good set 
 {2,4,6,8,10,12,14,16,18,20}, // quick set 
-{3,6,12,24,48,96,192,384,768,1536}}; // standard notes from midi clock 
+//{3,6,12,24,48,96,192,384,768,1536}}; // standard notes from midi clock 
+{3,5,7,9,11,13,15,17,19,21}}; //midi divisions replaced with an odd division set
+
 int divchoice;
 int divswitch = 2;
 
@@ -72,7 +75,7 @@ pinMode(set, OUTPUT);}
 
 void loop() {
   
-if(Serial.available() > 0) { //Start reading MIDI data
+/* if(Serial.available() > 0) { //Start reading MIDI data
 data = Serial.read();
 
 if(data == midi_start) {
@@ -88,6 +91,7 @@ play_flag = 0;
 else if((data == midi_clock) && (play_flag == 1)) {
 Sync();
 }
+*/
 
 }
 // ANALOG PULSE TRIGGER 
