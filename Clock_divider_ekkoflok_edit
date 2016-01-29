@@ -9,7 +9,8 @@ Enable Random
 Consider using switch for swing 
 Enable CV when clock is running from MIDI 
 Enable CC from Midi to influence divisor and swing 
-Remove midi for clarity, making the module an analog clock divider alone
+
+Remove midi for clarity, making the module an analog clock divider alone (Valdemar)
 
 
 
